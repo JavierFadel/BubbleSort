@@ -5,12 +5,21 @@
 using namespace std;
 
 // TODO: can you return array in c++?
+// TODO: ask the user if the calculated value is minimum to maximum or vice versa.
+// TODO: check if option's character value is valid.
 
 // Main function.
 int main() {
     // Variable declaration: the size of array is not dynamic yet.
     int temp, arrLength;
     int pass = 0;
+    char optionSelected;
+
+    // User can decide the order: minimum to maximum or vice versa.
+    cout << "Pilih urutan: \n";
+    cout << "[a] Kecil ke Besar\n";
+    cout << "[b] Besar ke Kecil\n";
+    cin >> optionSelected;
 
     // User can decide how many data going to the array.
     cout << "Input jumlah data:";
@@ -40,11 +49,24 @@ int main() {
     // Calculate output value: sorted from minimum to maximum.
     for (int i = 0; i < divider; i++) {
         for (int j = i + 1; j < divider; j++) {
-            // Everytime second value is bigger than the first one, swapped out with temporary variables.
-            if (arr[j] < arr[i]) {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+            // Sorting algorithm based on option selected.
+            if (tolower(optionSelected) == 'a') {
+                // Everytime second value is lower than the first one, swapped out with temporary variables.
+                if (arr[j] < arr[i]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            } else if (tolower(optionSelected) == 'b') {
+                // Everytime second value is bigger than the first one, swapped out with temporary variables.
+                if (arr[j] > arr[i]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            } else {
+                // Option not valid.
+                cout << "Opsi pilihan tidak valid.\n";
             }
         }
         // Log data: shows how many loops/iteration occur.
