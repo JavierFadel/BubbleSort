@@ -7,12 +7,13 @@ using namespace std;
 // TODO: can you return array in c++?
 // TODO: ask the user if the calculated value is minimum to maximum or vice versa.
 // TODO: check if option's character value is valid.
+/* TODO: can you return array in c++?
+ * TODO: create a function to display array */
 
 // Main function.
 int main() {
     // Variable declaration: the size of array is not dynamic yet.
-    int temp, arrLength;
-    int pass = 0;
+    int temp, arrLength, smallestNumb, largestNumb, pass = 0;
     char optionSelected;
 
     // User can decide the order: minimum to maximum or vice versa.
@@ -57,13 +58,18 @@ int main() {
                     arr[i] = arr[j];
                     arr[j] = temp;
                 }
-            } else if (tolower(optionSelected) == 'b') {
+                // Smallest number should be the first index, largest should be the last.
+                smallestNumb = arr[0];
+                largestNumb = arr[divider-1];
+            } else if (tolower(optionSelected) == 'b') {    
                 // Everytime second value is bigger than the first one, swapped out with temporary variables.
                 if (arr[j] > arr[i]) {
                     temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp;
                 }
+                smallestNumb = arr[divider-1];
+                largestNumb = arr[0];
             } else {
                 // Option not valid.
                 cout << "Opsi pilihan tidak valid.\n";
