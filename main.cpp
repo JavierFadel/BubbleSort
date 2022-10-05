@@ -88,6 +88,8 @@ int main() {
 
     // Display how many times the loop are iterated.
     cout << "Jumlah pengulangan adalah " << pass << " kali.\n";
+    cout << "Bilangan terkecil: " << smallestNumb << endl;
+    cout << "Bilangan terbesar: " << largestNumb << endl;
 
     return 0;
 }
