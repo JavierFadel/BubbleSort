@@ -1,0 +1,356 @@
+SPESIFIKASI KEBUTUHAN PERANGKAT LUNAK
+SELLIFY 
+(Goods Sales Transaction Management Program)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+untuk:
+Universitas Dian Nuswantoro
+
+Dipersiapkan oleh:
+Javier Fadel Maestrodiaz (A11.2022.14381)
+Fatwa Reksa Aji Pradana (A11.2022.14393)
+Daftar isi
+1. Pendahuluan
+1.1 Tujuan Penulisan Dokumen
+1.2 Lingkup Masalah
+1.3 Definisi, Istilah dan Singkatan
+1.4 Aturan Penomoran
+1.5 Referensi
+1.6 Deskripsi umum Dokumen (Ikhtisar)
+
+2. Deskripsi Umum Aplikasi Sellify
+2.1 Deskripsi Umum Aplikasi Sellify
+2.2 Karakteristik Pengguna
+2.3 Batasan
+2.4 Lingkungan Operasi
+
+3. Deskripsi Kebutuhan
+3.1 Kebutuhan Antarmuka Eksternal
+3.1.1 Antarmuka Pemakai
+3.1.2 Antarmuka Perangkat Keras
+3.1.3 Antarmuka Perangkat Lunak
+3.1.4 Antarmuka Komunikasi
+3.2 Kebutuhan Fungsional
+3.2.1 Manajemen Produk
+3.2.2 Manajemen Stok
+3.2.3 Manajemen Penjualan
+3.2.4 Manajemen Pembayaran
+3.2.5 Laporan Penjualan Harian
+3.3 Kebutuhan Non-Fungsional
+3.4 Batasan Perancangan
+3.5 Kerunutan (traceability)
+
+4. Desain Sistem
+4.1 Diagram Konteks
+4.2 DFD Level 0
+4.3 DFD Level 1
+4.4 DFD Level 2: Manajemen Produk
+4.5 DFD Level 2: Manajemen Stok
+4.6 DFD Level 2: Manajemen Penjualan
+4.7 DFD Level 2: Manajemen Pembayaran
+4.8 Laporan Penjualan Harian
+4.9 E-R Diagram
+
+5. Implementasi
+5.1 Lingkungan Pengembangan
+5.2 Arsitektur Aplikasi
+5.3 Detail Implementasi
+5.4 Uji Coba dan Validasi
+
+6. Pengelolaan Proyek
+6.1 Manajemen Proyek
+6.2 Jadwal dan Rencana Kerja
+6.3 Pengendalian Versi
+
+7. Kesimpulan
+7.1 Hasil yang Dicapai
+7.2 Saran dan Rekomendasi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Pendahuluan
+
+1.1 Tujuan 
+Tujuan dari penulisan dokumen ini adalah untuk memberikan panduan bagi tim pengembang Sellify dalam memahami dan merancang sistem aplikasi manajemen penjualan online yang efektif dan efisien. Dokumen ini juga berguna sebagai referensi bagi pengguna Sellify dalam memahami fitur-fitur aplikasi dan cara penggunaannya. Selain itu, dokumen ini juga diharapkan dapat memudahkan proses pengembangan aplikasi dan meminimalkan risiko terjadinya kesalahan atau kesalahpahaman dalam pengembangan aplikasi.
+
+1.2 Lingkup Masalah
+	•	Aplikasi Sellify hanya digunakan untuk manajemen produk, stok, penjualan, dan pembayaran dalam konteks bisnis kecil dan menengah. Aplikasi ini tidak diperuntukkan bagi bisnis besar yang memiliki skala operasi yang kompleks.
+	•	Aplikasi Sellify hanya dapat dioperasikan pada perangkat komputer atau smartphone yang memenuhi spesifikasi minimum yang ditentukan oleh pengembang. Aplikasi ini tidak dapat dioperasikan pada perangkat yang tidak memenuhi spesifikasi tersebut.
+	•	Aplikasi Sellify hanya dapat diakses oleh pengguna yang telah terdaftar dan memiliki izin akses dari pemilik bisnis atau admin. Aplikasi ini tidak dapat diakses oleh orang yang tidak memiliki izin akses.
+	•	Aplikasi Sellify hanya dapat mengelola produk fisik. Aplikasi ini tidak dapat digunakan untuk manajemen produk digital seperti e-book, musik, atau software.
+	•	Aplikasi Sellify tidak memiliki fitur pengiriman barang dan logistik. Pengiriman barang dilakukan secara manual oleh pemilik bisnis atau pihak ketiga yang telah bekerja sama dengan bisnis.
+	•	Aplikasi Sellify hanya dapat mengelola pembayaran melalui transfer bank atau pembayaran langsung. Aplikasi ini tidak memiliki integrasi dengan gateway pembayaran online seperti PayPal atau GoPay.
+
+1.3 Definisi, Istilah dan Singkatan
+	•	Antarmuka Pemakai: antarmuka yang digunakan oleh pengguna aplikasi Sellify untuk mengakses fungsionalitas aplikasi.
+	•	Antarmuka Perangkat Keras: antarmuka yang menghubungkan perangkat keras, seperti barcode scanner dan printer, dengan aplikasi Sellify.
+	•	Antarmuka Perangkat Lunak: antarmuka yang menghubungkan aplikasi Sellify dengan aplikasi lainnya, seperti aplikasi pembayaran.
+	•	Antarmuka Komunikasi: antarmuka yang digunakan untuk berkomunikasi dengan server Sellify.
+	•	Manajemen Produk: fungsionalitas aplikasi Sellify yang digunakan untuk mengelola produk yang dijual oleh toko.
+	•	Manajemen Stok: fungsionalitas aplikasi Sellify yang digunakan untuk mengelola stok produk yang tersedia di toko.
+	•	Manajemen Penjualan: fungsionalitas aplikasi Sellify yang digunakan untuk mengelola proses penjualan produk.
+	•	Manajemen Pembayaran: fungsionalitas aplikasi Sellify yang digunakan untuk mengelola proses pembayaran produk.
+	•	Laporan Penjualan Harian: fungsionalitas aplikasi Sellify yang digunakan untuk melihat laporan penjualan harian toko.
+	•	Batasan Perancangan: batasan-batasan teknis yang harus diperhatikan dalam perancangan aplikasi Sellify.
+	•	Kerunutan (Traceability): kemampuan untuk melacak hubungan antara kebutuhan, rancangan, dan implementasi dalam aplikasi Sellify.
+
+1.4 Aturan Penomoran
+	•	Setiap bab dalam dokumen ini akan diberikan nomor urut secara bertingkat (1, 1.1, 1.2, dst.)
+	•	Setiap sub-bab akan diberikan nomor urut menggunakan desimal dan dipisahkan dengan tanda titik (.)
+	•	Setiap nomor urut harus disertakan dalam daftar isi agar mudah diakses dan diikuti oleh pembaca.
+	•	Nomor urut harus konsisten dan tidak boleh ada nomor yang dilewati atau diulang pada bab/sub-bab yang sama.
+	•	Nomor urut harus dipertimbangkan secara cermat untuk mencerminkan hierarki yang jelas dan logis dari dokumen.
+
+1.5 Referensi
+	•	Buku-buku dan jurnal mengenai pengembangan aplikasi e-commerce dan manajemen toko online.
+	•	Referensi dari aplikasi serupa yang sudah ada sebelumnya, untuk mempelajari fitur-fitur yang sudah ada dan mengevaluasi kekurangan dan kelebihannya.
+	•	Dokumentasi dari teknologi dan platform yang digunakan dalam pengembangan aplikasi Sellify, seperti dokumentasi dari bahasa pemrograman, framework, dan layanan cloud yang digunakan.
+	•	Wawancara dengan pengguna potensial untuk mengetahui kebutuhan dan harapan mereka terhadap aplikasi toko online.
+	•	Tinjauan dan analisis pasar untuk mempelajari tren dan strategi terbaru dalam bisnis e-commerce dan toko online.
+
+1.6 Deskripsi umum Dokumen (Ikhtisar)
+Dokumen ini merupakan sebuah rancangan dan spesifikasi teknis dari aplikasi Sellify yang akan dikembangkan. Aplikasi Sellify sendiri adalah sebuah sistem manajemen penjualan dan stok produk untuk sebuah toko online. Dokumen ini bertujuan untuk memberikan gambaran secara umum tentang kebutuhan dan desain sistem aplikasi Sellify, termasuk deskripsi kebutuhan fungsional dan non-fungsional, desain sistem, implementasi, dan pengelolaan proyek. Dengan dokumen ini, diharapkan para stakeholder dapat memahami secara jelas tentang seluruh aspek yang terkait dengan aplikasi Sellify dan dapat memastikan bahwa pengembangan aplikasi ini dapat berjalan dengan baik dan sesuai dengan tujuan yang telah ditetapkan.
+
+2. Deskripsi Umum Aplikasi Sellify
+
+2.1 Deskripsi Umum Aplikasi Sellify
+Aplikasi Sellify adalah sebuah aplikasi manajemen penjualan berbasis web yang dirancang untuk membantu pengusaha kecil dan menengah mengelola bisnis penjualan mereka secara efektif. Aplikasi ini menyediakan fitur-fitur untuk manajemen produk, manajemen stok, manajemen penjualan, manajemen pembayaran, serta laporan penjualan harian.
+
+Aplikasi Sellify dibangun dengan menggunakan teknologi modern dan user-friendly, sehingga mudah digunakan dan dapat diakses dari berbagai perangkat. Aplikasi ini juga menyediakan antarmuka yang intuitif dan didukung dengan fitur-fitur analitik yang dapat membantu pengguna dalam mengambil keputusan bisnis yang tepat.
+
+2.2 Karakteristik Pengguna
+	•	Pelaku Usaha Mikro, Kecil, dan Menengah (UMKM) yang ingin menjual produk secara online
+	•	Pelaku Usaha yang ingin memanfaatkan teknologi untuk meningkatkan penjualan
+	•	Individu yang ingin membeli produk yang ditawarkan oleh pelaku usaha di platform Sellify.
+
+2.3 Batasan
+	•	Sellify hanya tersedia dalam bahasa Indonesia.
+	•	Sellify hanya dapat diakses melalui platform web dan tidak tersedia sebagai aplikasi mobile.
+	•	Sellify hanya dapat digunakan oleh pengguna yang memiliki akun terdaftar.
+	•	Sellify hanya dapat digunakan untuk produk-produk yang legal dan tidak melanggar hukum.
+	•	Sellify tidak memiliki integrasi dengan sistem keuangan atau perbankan eksternal.
+	•	Sellify hanya dapat digunakan di wilayah yang tercakup oleh jaringan internet yang stabil dan cepat.
+
+2.4 Lingkungan Operasi
+Aplikasi Sellify dapat dioperasikan pada berbagai jenis perangkat seperti smartphone, tablet, dan desktop dengan sistem operasi yang mendukung aplikasi web. Selain itu, aplikasi ini membutuhkan koneksi internet yang stabil untuk dapat digunakan secara optimal.
+
+Dalam lingkungan operasi aplikasi Sellify, pengguna harus memastikan bahwa perangkat yang digunakan memiliki spesifikasi minimal seperti prosesor dan RAM yang cukup, serta browser web yang mendukung teknologi HTML5 dan CSS3.
+
+Aplikasi Sellify juga dapat berintegrasi dengan berbagai platform e-commerce dan payment gateway untuk memudahkan transaksi online. Namun, pengguna harus memastikan bahwa platform dan gateway yang digunakan sudah terintegrasi dengan aplikasi Sellify dan memenuhi standar keamanan yang ditetapkan oleh aplikasi ini.
+
+3. Deskripsi Kebutuhan
+
+3.1 Kebutuhan Antarmuka Eksternal
+Kebutuhan antarmuka eksternal dalam konteks aplikasi Sellify meliputi:
+	•	Antarmuka login: Antarmuka ini harus mudah digunakan dan aman sehingga pengguna dapat dengan mudah masuk ke dalam aplikasi dan mengakses fitur-fiturnya.
+	•	Antarmuka pencarian: Antarmuka pencarian harus mudah digunakan dan dapat memudahkan pengguna dalam mencari produk yang mereka inginkan.
+	•	Antarmuka keranjang belanja: Antarmuka keranjang belanja harus mudah digunakan dan memungkinkan pengguna untuk mengelola produk yang mereka ingin beli sebelum melakukan checkout.
+	•	Antarmuka checkout: Antarmuka checkout harus mudah digunakan dan memungkinkan pengguna untuk memilih metode pembayaran dan mengkonfirmasi pesanan mereka.
+	•	Antarmuka manajemen produk: Antarmuka manajemen produk harus mudah digunakan dan memungkinkan pengguna untuk menambah, mengedit, dan menghapus produk mereka dengan mudah.
+	•	Antarmuka laporan penjualan: Antarmuka laporan penjualan harus mudah digunakan dan memungkinkan pengguna untuk melihat laporan penjualan mereka dengan cepat dan mudah.
+
+3.1.1 Antarmuka Pemakai
+Kebutuhan antarmuka eksternal dalam konteks aplikasi Sellify meliputi:
+	•	Antarmuka Pemakai adalah bagian dari aplikasi Sellify yang menampilkan tampilan penggunaan aplikasi dan berfungsi sebagai sarana interaksi pengguna dengan aplikasi. Antarmuka ini dirancang untuk mudah digunakan dan menarik sehingga dapat meningkatkan pengalaman pengguna dalam menggunakan aplikasi Sellify.
+	•	Beberapa komponen antarmuka pemakai pada aplikasi Sellify meliputi:
+	•	Halaman login: berfungsi sebagai gerbang masuk ke dalam aplikasi Sellify, pengguna harus memasukkan informasi akun dan sandi yang benar untuk dapat mengakses aplikasi.
+	•	Dashboard: merupakan halaman utama aplikasi Sellify yang menampilkan informasi penting tentang produk, penjualan, dan transaksi yang terjadi di toko online pengguna.
+	•	Halaman produk: menampilkan daftar produk yang dijual oleh pengguna. Pada halaman ini, pengguna dapat menambah, mengedit, atau menghapus produk.
+	•	Halaman penjualan: menampilkan daftar penjualan yang terjadi di toko online pengguna. Pengguna dapat melihat detail setiap pesanan dan mengubah status pesanan.
+	•	Halaman laporan: menampilkan laporan penjualan dan transaksi yang terjadi di toko online pengguna. Laporan ini dapat membantu pengguna dalam mengelola toko online mereka dan memperbaiki kinerja penjualan.
+
+3.1.2 Antarmuka Perangkat Keras
+Antarmuka perangkat keras dalam aplikasi Sellify terdiri dari perangkat yang dapat mengakses internet dan menjalankan aplikasi web. Beberapa perangkat keras yang dapat digunakan adalah:
+	•	Desktop atau laptop: Aplikasi Sellify dapat diakses melalui web browser seperti Google Chrome, Mozilla Firefox, dan lainnya pada desktop atau laptop.
+	•	Smartphone atau tablet: Aplikasi Sellify juga dapat diakses melalui web browser pada smartphone atau tablet seperti iPhone, iPad, dan Android.
+	•	Printer: Seluruh tampilan yang ditampilkan pada aplikasi Sellify dapat dicetak melalui printer yang terhubung dengan perangkat yang digunakan untuk mengakses aplikasi.
+	•	Seluruh perangkat keras yang digunakan harus mendukung penggunaan aplikasi web dan memiliki koneksi internet yang stabil untuk menjalankan aplikasi Sellify secara optimal.
+
+3.1.3 Antarmuka Perangkat Lunak
+Antarmuka perangkat lunak pada aplikasi Sellify mencakup tampilan halaman login, dashboard penjualan, daftar produk, halaman produk, keranjang belanja, serta halaman checkout. Antarmuka ini harus mudah dipahami dan digunakan oleh pengguna aplikasi, sehingga dapat meningkatkan efisiensi dan pengalaman pengguna. Beberapa fitur antarmuka perangkat lunak pada aplikasi Sellify antara lain tombol "Tambahkan ke keranjang", "Beli sekarang", "Masuk", "Daftar", dan "Lupa kata sandi". Selain itu, antarmuka perangkat lunak ini juga harus responsif dan dapat diakses melalui berbagai perangkat seperti komputer, laptop, tablet, dan smartphone.
+
+3.1.4 Antarmuka Komunikasi
+	•	Notifikasi: Aplikasi Sellify memberikan notifikasi kepada pengguna tentang transaksi, pesanan baru, dan pesan masuk. Notifikasi ini muncul pada tampilan utama aplikasi serta melalui pemberitahuan di perangkat pengguna.
+	•	Chatting: Aplikasi Sellify menyediakan fitur chatting antara pengguna dan pembeli yang memungkinkan komunikasi langsung dan real-time mengenai produk yang dijual.
+	•	Email: Aplikasi Sellify mengirimkan email konfirmasi dan invoice kepada pembeli setelah melakukan transaksi.
+	•	Integrasi Media Sosial: Aplikasi Sellify dapat terintegrasi dengan media sosial seperti Facebook dan Instagram untuk mempromosikan produk dan menghubungkan dengan calon pembeli melalui platform tersebut.
+
+
+3.2 Kebutuhan Fungsional
+Sellify harus memiliki fungsi untuk memungkinkan pengguna melakukan pendaftaran akun dengan memberikan informasi pribadi yang diperlukan seperti nama, alamat email, nomor telepon, dan kata sandi. Selain itu, pengguna juga harus dapat melakukan login ke dalam akun mereka setelah mendaftar.
+
+Sellify juga harus memiliki fungsi untuk memungkinkan pengguna membuat dan mengelola produk dengan mudah. Pengguna harus dapat mengatur detail produk seperti nama, deskripsi, harga, gambar, dan jumlah stok. Sellify harus dapat mengelola stok dan menampilkan stok yang tersedia pada halaman produk.
+
+Sellify harus memiliki fungsi checkout yang aman dan mudah digunakan. Pengguna harus dapat memilih produk yang ingin dibeli dan menyelesaikan pembayaran dengan opsi pembayaran yang berbeda seperti kartu kredit, PayPal, atau transfer bank.
+
+Sellify juga harus memiliki fungsi untuk melacak pesanan dan mengelola pengiriman. Pengguna harus dapat melihat status pesanan dan memperbarui status pengiriman dari pesanan yang telah dikirim.
+
+Sellify harus memiliki sistem manajemen pelanggan yang dapat memungkinkan pengguna untuk melihat detail pelanggan seperti nama, alamat email, dan riwayat pembelian. Pengguna juga harus dapat mengirim email pemasaran dan notifikasi kepada pelanggan.
+
+3.2.1 Manajemen Produk
+	•	Membuat dan mengelola katalog produk dengan informasi seperti deskripsi produk, gambar, harga, dan stok.
+	•	Mengedit, menghapus, dan menambahkan produk ke dalam katalog produk.
+	•	Mengatur kategori produk dan menghubungkan produk ke kategori tersebut.
+	•	Mengelola stok produk dan mengubah status stok saat produk habis atau tersedia kembali.
+	•	Menampilkan informasi detail produk seperti ukuran, berat, warna, bahan, dan fitur lainnya.
+	•	Menghubungkan produk dengan promo atau diskon yang tersedia.
+	•	Menerapkan filter dan sorting pada katalog produk agar mudah dicari oleh pengguna.
+	•	Melakukan backup data produk untuk menghindari kehilangan data.
+
+3.2.2 Manajemen Stok
+Fitur manajemen stok adalah fitur yang memungkinkan pengguna untuk mengelola stok produk yang dimiliki. Beberapa kebutuhan fungsional dari fitur ini antara lain:
+	•	Melihat jumlah stok produk yang tersedia.
+	•	Menambahkan jumlah stok produk yang tersedia.
+	•	Mengurangi jumlah stok produk ketika ada pembelian.
+	•	Memberikan notifikasi jika stok produk sudah habis atau hampir habis.
+	•	Melihat riwayat perubahan jumlah stok produk.
+Dengan fitur manajemen stok yang baik, pengguna dapat memantau jumlah stok produk yang dimiliki, mengelola stok produk dengan mudah, dan menghindari kehabisan stok yang dapat merugikan bisnis.
+
+3.2.3 Manajemen Penjualan
+Fitur-fitur manajemen penjualan pada aplikasi Sellify mencakup:
+	•	Membuat dan mengelola pesanan dari pelanggan
+	•	Menyediakan data dan statistik penjualan secara real-time
+	•	Menetapkan harga produk
+	•	Mengelola status pengiriman produk
+	•	Memproses pembayaran dari pelanggan
+	•	Mengirimkan email notifikasi kepada pelanggan mengenai status pesanan
+Contoh kasus penggunaan fitur ini adalah ketika pelanggan melakukan pembelian produk melalui aplikasi Sellify, maka penjual dapat melihat pesanan tersebut dan memprosesnya dengan mengatur status pengiriman dan memproses pembayaran. Aplikasi Sellify juga memberikan data dan statistik penjualan yang membantu penjual untuk memantau performa bisnis mereka.
+
+3.2.4 Manajemen Pembayaran
+	•	Pengguna dapat memilih metode pembayaran yang tersedia, seperti transfer bank, kartu kredit, atau dompet digital.
+	•	Aplikasi Sellify dapat menampilkan informasi pembayaran yang jelas dan lengkap, termasuk harga produk, biaya pengiriman, dan pajak.
+	•	Setelah pembayaran berhasil dilakukan, sistem akan mengirimkan notifikasi ke pengguna dan mengubah status pesanan menjadi "dibayar".
+	•	Aplikasi Sellify juga menyediakan fitur untuk mengelola dan memantau transaksi pembayaran, seperti melihat riwayat pembayaran dan menghasilkan laporan keuangan.
+
+3.2.5 Laporan Penjualan Harian
+Fitur Laporan Penjualan Harian merupakan kebutuhan fungsional yang penting untuk aplikasi Sellify. Fitur ini memungkinkan pengguna untuk melihat laporan penjualan harian dengan rincian jumlah produk terjual, pendapatan, serta pelanggan yang melakukan pembelian.
+
+Berikut ini adalah contoh tampilan Laporan Penjualan Harian pada aplikasi Sellify:
+
+
+Dalam contoh di atas, pengguna dapat melihat daftar produk yang terjual pada hari tersebut, jumlah produk yang terjual, harga satuan, total harga, total penjualan hari itu dan jumlah pelanggan baru yang melakukan pembelian. Laporan ini sangat berguna bagi pengguna untuk melacak performa penjualan produk pada hari tertentu dan memperoleh insight tentang kinerja bisnis.
+
+3.3 Kebutuhan Non-Fungsional
+	•	Kinerja
+Aplikasi Sellify harus mampu menangani beban akses dan transaksi yang besar tanpa mengalami penurunan kinerja yang signifikan.
+Waktu respon aplikasi harus kurang dari 2 detik saat mengakses halaman utama dan saat melakukan pencarian produk.
+Aplikasi Sellify harus mampu menangani hingga 1000 transaksi per menit.
+	•	Keamanan
+Aplikasi Sellify harus menggunakan protokol keamanan yang kuat, seperti HTTPS, untuk melindungi data pengguna.
+Hanya pengguna terdaftar yang diizinkan untuk mengakses informasi produk dan melakukan transaksi.
+Password pengguna harus disimpan dalam bentuk hash untuk mencegah akses yang tidak sah ke akun pengguna.
+	•	 Ketersediaan
+Aplikasi Sellify harus tersedia 24/7 kecuali saat pemeliharaan sistem.
+Downtime yang dijadwalkan harus dikomunikasikan dengan jelas kepada pengguna melalui email atau pemberitahuan dalam aplikasi.
+Backup data harus dilakukan secara berkala untuk memastikan ketersediaan data pengguna dalam hal terjadi kegagalan sistem.
+	•	Skalabilitas
+Aplikasi Sellify harus mampu mengatasi peningkatan jumlah pengguna dan produk tanpa mengalami penurunan kinerja.
+Arsitektur aplikasi harus dirancang agar mudah diupgrade dan di-extend untuk memenuhi kebutuhan yang berkembang.
+	•	Aplikasi Sellify harus mampu menangani peningkatan jumlah transaksi secara horizontal dengan menambahkan server tambahan.
+
+
+3.4 Batasan Perancangan
+Batasan Perancangan dalam konteks aplikasi Sellify:
+	•	Bahasa Pemrograman: Aplikasi Sellify akan dirancang menggunakan bahasa pemrograman Java.
+	•	Sistem Operasi: Aplikasi Sellify akan mendukung sistem operasi Windows, MacOS, dan Linux.
+	•	Database: Aplikasi Sellify akan menggunakan database MySQL untuk menyimpan data produk, stok, penjualan, dan pembayaran.
+	•	Arsitektur Aplikasi: Aplikasi Sellify akan dirancang dengan menggunakan arsitektur Model-View-Controller (MVC).
+	•	Antarmuka Pengguna: Antarmuka pengguna (UI) aplikasi Sellify akan dibangun menggunakan teknologi JavaFX.
+	•	Keamanan: Aplikasi Sellify akan memiliki mekanisme autentikasi dan otorisasi untuk mengamankan data pengguna dan data transaksi.
+	•	Skalabilitas: Aplikasi Sellify akan didesain untuk bisa menangani jumlah produk dan transaksi yang besar dengan performa yang baik.
+	•	Ketergantungan Eksternal: Aplikasi Sellify bergantung pada API payment gateway dan API shipping provider untuk proses pembayaran dan pengiriman barang.
+
+3.5 Kerunutan (traceability)
+Dalam perancangan aplikasi Sellify, penting untuk menjaga kerunutan (traceability) antara kebutuhan fungsional dan non-fungsional dengan desain dan implementasi. Berikut adalah contoh kerunutan dari kebutuhan fungsional dan non-fungsional ke dalam desain dan implementasi:
+
+Kebutuhan Fungsional: Sistem harus dapat mengelola inventaris produk dengan menambah, mengedit, dan menghapus produk.
+Kebutuhan Non-Fungsional: Sistem harus memiliki waktu respon yang cepat saat menambah, mengedit, dan menghapus produk.
+
+Desain: Untuk memenuhi kebutuhan fungsional dan non-fungsional tersebut, perlu dirancang basis data yang efisien dan sistem penyimpanan yang cepat untuk mengelola inventaris produk.
+Implementasi: Basis data yang dirancang kemudian diimplementasikan dengan memperhatikan waktu respon yang cepat saat menambah, mengedit, dan menghapus produk. Selain itu, sistem penyimpanan juga diimplementasikan dengan teknologi terkini yang dapat mempercepat waktu respon.
+
+Dengan menjaga kerunutan seperti contoh di atas, maka setiap kebutuhan fungsional dan non-fungsional akan terdokumentasi dan terimplementasi secara konsisten dan sesuai dengan desain aplikasi Sellify yang telah dirancang.
+
+4. Desain Sistem
+
+4.1 Diagram Konteks
+Sellify adalah sebuah aplikasi manajemen penjualan online yang digunakan oleh pedagang online untuk mengelola produk, stok, penjualan, dan pembayaran. Aplikasi ini memerlukan antarmuka web yang memungkinkan pengguna untuk mengakses dan menggunakan aplikasi melalui browser web.
+
+Diagram konteks Sellify menunjukkan antarmuka web sebagai lingkungan eksternal yang terhubung ke aplikasi Sellify. Lingkungan eksternal ini dapat diakses oleh pengguna dari mana saja dengan koneksi internet. Aplikasi Sellify juga terhubung dengan database untuk menyimpan data produk, stok, penjualan, dan pembayaran.
+
+Selain itu, aplikasi ini juga berkomunikasi dengan layanan pengiriman dan pembayaran pihak ketiga untuk mengatur pengiriman produk dan proses pembayaran. Diagram konteks Sellify menunjukkan hubungan antara aplikasi Sellify dengan lingkungan eksternal, database, dan layanan pihak ketiga yang terlibat dalam proses manajemen penjualan online. 
